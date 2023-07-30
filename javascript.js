@@ -18,11 +18,13 @@ function Book(title, author, pages, hasReadBook) {
 function addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook) {
   const newBook = new Book(bookTitle, bookAuthor, bookPages, hasReadTheBook);
 
-  myLibrary.push(newBook);
-
-  displayBook();
-
-  return newBook;
+  if (arguments[(0, 1, 2, 3)] === '') {
+    alert('Fields cannot be empty');
+  } else {
+    myLibrary.push(newBook);
+    displayBook();
+    return newBook;
+  }
 }
 
 function displayBook() {
@@ -33,8 +35,6 @@ function displayBook() {
     hasReadBook.textContent = myLibrary[i].hasReadBook;
   }
 }
-
-console.log(myLibrary);
 
 btn.addEventListener('click', () => {
   modalContainer.classList.add('showModal');
@@ -54,5 +54,9 @@ bookForm.addEventListener('submit', (e) => {
   const hasReadTheBook = hasReadTheBookInput.value;
 
   addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook);
+
+  console.log(myLibrary);
+  modalContainer.classList.remove('showModal');
+
   return;
 });

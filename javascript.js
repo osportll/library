@@ -3,6 +3,8 @@ const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const hasReadBook = document.querySelector('#hasRead');
 const btn = document.querySelector('.btn');
+const modalContainer = document.querySelector('.modalContainer');
+const bookForm = document.querySelector('.bookForm');
 
 let myLibrary = [];
 
@@ -11,30 +13,14 @@ function Book(title, author, pages, hasReadBook) {
   this.author = author;
   this.pages = pages;
   this.hasReadBook = hasReadBook;
-
-  /* this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasReadBook}`;
-  }; */
 }
 
-/* const theHobbit = new Book(
-  'The Hobbit',
-  'J.R.R. Tolkien',
-  '295',
-  'not read yet'
-); */
-
-/* console.log(theHobbit.info()); */
-
-function addBookToLibrary() {
-  let bookTitle = prompt('book Title');
-  let bookAuthor = prompt('book author');
-  let bookPages = prompt('how many pages?');
-  let hasReadTheBook = prompt('already read it?');
-
+function addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook) {
   const newBook = new Book(bookTitle, bookAuthor, bookPages, hasReadTheBook);
 
   myLibrary.push(newBook);
+
+  displayBook();
 
   return newBook;
 }
@@ -48,10 +34,25 @@ function displayBook() {
   }
 }
 
-addBookToLibrary();
-
 console.log(myLibrary);
 
 btn.addEventListener('click', () => {
-  displayBook();
+  modalContainer.classList.add('showModal');
+});
+
+bookForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const bookTitleInput = document.querySelector('.title');
+  const bookAuthorInput = document.querySelector('.author');
+  const bookPagesInput = document.querySelector('.pages');
+  const hasReadTheBookInput = document.querySelector('.hasReadIt');
+
+  const bookTitle = bookTitleInput.value;
+  const bookAuthor = bookAuthorInput.value;
+  const bookPages = bookPagesInput.value;
+  const hasReadTheBook = hasReadTheBookInput.value;
+
+  addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook);
+  return;
 });

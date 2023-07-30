@@ -21,14 +21,34 @@
         <td id="pages">Element 3</td>
         <td id="hasRead">Element 4</td>
       </tr>
-      <tr>
-        <td>Element 6</td>
-        <td>Element 7</td>
-        <td>Element 8</td>
-        <td>Element 9</td>
-      </tr>
     </table>
 
-    <button class="btn">Click Me!</button>
+    <button class="btn">Add New Book</button>
+
+    <div class="modalContainer">
+      <div class="newBookModal">
+        <form method="get" class="bookForm">
+          <div class="fields">
+            <label for="title">Book Title:</label>
+            <input type="text" name="title" class="title" />
+          </div>
+          <div class="fields">
+            <label for="author">Author:</label>
+            <input type="text" name="author" class="author" />
+          </div>
+          <div class="fields">
+            <label for="pages">How many pages?</label>
+            <input type="text" name="pages" class="pages" />
+          </div>
+          <div class="fields">
+            <label for="hasReadIt">Have You Read It?</label>
+            <input type="text" name="hasReadIt" class="hasReadIt" />
+          </div>
+          <div class="submitBtn">
+            <input type="submit" value="Add Book" />
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

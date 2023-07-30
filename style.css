@@ -1,3 +1,11 @@
 table {
   border: solid 1px black;
 }
+
+.modalContainer {
+  display: none;
+}
+
+.showModal {
+  display: block;
+}

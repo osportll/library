@@ -31,6 +31,46 @@
       <div class="main">
         <div class="cards"></div>
       </div>
+
+      <div class="modalContainer">
+        <form method="get" class="bookForm">
+          <h2>Add a book to the library</h2>
+          <div class="fields">
+            <!-- <label for="title">Book Title:</label> -->
+            <input
+              type="text"
+              name="title"
+              class="title"
+              placeholder="Book Title"
+            />
+          </div>
+          <div class="fields">
+            <!-- <label for="author">Author:</label> -->
+            <input
+              type="text"
+              name="author"
+              class="author"
+              placeholder="Author"
+            />
+          </div>
+          <div class="fields">
+            <!-- <label for="pages">How many pages?</label> -->
+            <input type="text" name="pages" class="pages" placeholder="Pages" />
+          </div>
+          <div class="fields checkDiv">
+            <label for="hasReadIt">Have You Read It?</label>
+            <input
+              type="checkbox"
+              name="hasReadIt"
+              class="hasReadIt"
+              id="hasReadIt"
+            />
+          </div>
+          <div class="submitBtn">
+            <input type="submit" value="Add Book" />
+          </div>
+        </form>
+      </div>
     </div>
 
     <table class="bookTable">
@@ -47,31 +87,5 @@
         <td id="hasRead">Element 4</td>
       </tr>
     </table>
-
-    <div class="modalContainer">
-      <div class="newBookModal">
-        <form method="get" class="bookForm">
-          <div class="fields">
-            <label for="title">Book Title:</label>
-            <input type="text" name="title" class="title" />
-          </div>
-          <div class="fields">
-            <label for="author">Author:</label>
-            <input type="text" name="author" class="author" />
-          </div>
-          <div class="fields">
-            <label for="pages">How many pages?</label>
-            <input type="text" name="pages" class="pages" />
-          </div>
-          <div class="fields">
-            <label for="hasReadIt">Have You Read It?</label>
-            <input type="text" name="hasReadIt" class="hasReadIt" />
-          </div>
-          <div class="submitBtn">
-            <input type="submit" value="Add Book" />
-          </div>
-        </form>
-      </div>
-    </div>
   </body>
 </html>

@@ -68,5 +68,88 @@ table {
 }
 
 .showModal {
-  display: block;
+  display: inline-block;
+  border: solid 3px #33332d;
+  background-color: #fff;
+  width: 300px;
+}
+
+.bookForm {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.bookForm > h2 {
+  font-size: 19px;
+  text-align: center;
+  margin: 10px 0 10px 0;
+  color: #33332d;
+}
+
+.fields {
+  display: flex;
+  justify-content: center;
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitBtn > input {
+  appearance: none;
+  border: none;
+  background-color: #33332d;
+  width: 214px;
+  height: 39px;
+  padding: 10px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.submitBtn > input:hover {
+  background-color: #272722;
+  cursor: pointer;
+}
+
+.submitBtn > input:active {
+  background-color: #0f0f0d;
+}
+
+input.title,
+input.author,
+input.pages {
+  width: 200px;
+  height: 25px;
+  padding: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #33332d;
+  border: solid 2px #33332d;
+}
+
+.checkDiv {
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  color: #33332d;
+}
+
+.checkDiv > label {
+  font-family: 'Roboto', sans-serif;
+}
+
+.hasReadIt {
+  height: 20px;
+  width: 20px;
+  margin: 0;
 }

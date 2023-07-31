@@ -43,15 +43,12 @@ btn.addEventListener('click', () => {
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const bookTitleInput = document.querySelector('.title');
-  const bookAuthorInput = document.querySelector('.author');
-  const bookPagesInput = document.querySelector('.pages');
-  const hasReadTheBookInput = document.querySelector('.hasReadIt');
+  const bookTitle = document.querySelector('.title').value;
+  const bookAuthor = document.querySelector('.author').value;
+  const bookPages = document.querySelector('.pages').value;
+  const hasReadTheBook = document.querySelector('.hasReadIt').value;
 
-  const bookTitle = bookTitleInput.value;
-  const bookAuthor = bookAuthorInput.value;
-  const bookPages = bookPagesInput.value;
-  const hasReadTheBook = hasReadTheBookInput.value;
+  console.log(document.querySelector('.title'));
 
   addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook);
 
@@ -60,3 +57,10 @@ bookForm.addEventListener('submit', (e) => {
 
   return;
 });
+
+/* Things to add:
+
+-Make the pages input accept only numbers
+-Make the question input a checkbox instead
+
+*/

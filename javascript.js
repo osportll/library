@@ -5,6 +5,7 @@ const hasReadBook = document.querySelector('#hasRead');
 const btn = document.querySelector('.btn');
 const modalContainer = document.querySelector('.modalContainer');
 const bookForm = document.querySelector('.bookForm');
+const overlay = document.querySelector('.overlay');
 
 let myLibrary = [];
 
@@ -38,6 +39,7 @@ function displayBook() {
 
 btn.addEventListener('click', () => {
   modalContainer.classList.add('showModal');
+  overlay.classList.add('overlayActive');
 });
 
 bookForm.addEventListener('submit', (e) => {
@@ -54,8 +56,14 @@ bookForm.addEventListener('submit', (e) => {
 
   console.log(myLibrary);
   modalContainer.classList.remove('showModal');
+  overlay.classList.remove('overlayActive');
 
   return;
+});
+
+overlay.addEventListener('click', () => {
+  modalContainer.classList.remove('showModal');
+  overlay.classList.remove('overlayActive');
 });
 
 /* Things to add:

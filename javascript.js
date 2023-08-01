@@ -19,13 +19,9 @@ function Book(title, author, pages, hasReadBook) {
 function addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook) {
   const newBook = new Book(bookTitle, bookAuthor, bookPages, hasReadTheBook);
 
-  if (arguments[(0, 1, 2, 3)] === '') {
-    alert('Fields cannot be empty');
-  } else {
-    myLibrary.push(newBook);
-    displayBook();
-    return newBook;
-  }
+  myLibrary.push(newBook);
+  displayBook();
+  return newBook;
 }
 
 function displayBook() {
@@ -48,11 +44,16 @@ bookForm.addEventListener('submit', (e) => {
   const bookTitle = document.querySelector('.title').value;
   const bookAuthor = document.querySelector('.author').value;
   const bookPages = document.querySelector('.pages').value;
-  const hasReadTheBook = document.querySelector('.hasReadIt').value;
+  const hasReadTheBook = document.querySelector('.hasReadIt');
+  let bookIsRead;
 
-  console.log(document.querySelector('.title'));
+  if (hasReadTheBook.checked) {
+    bookIsRead = 'Already Read';
+  } else {
+    bookIsRead = 'Not read yet';
+  }
 
-  addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook);
+  addBookToLibrary(bookTitle, bookAuthor, bookPages, bookIsRead);
 
   console.log(myLibrary);
   modalContainer.classList.remove('showModal');

@@ -80,8 +80,9 @@ table {
 .showModal {
   display: inline-block;
   position: absolute;
-  border: solid 3px #000000;
-  background-color: #fff;
+  border: solid 5px #313131;
+  border-radius: 50px;
+  background-color: #ffffff;
   width: 370px;
   z-index: 3;
   top: 50%;
@@ -167,12 +168,17 @@ input.title,
 input.author,
 input.pages {
   width: 200px;
-  height: 25px;
-  padding: 5px;
+  padding: 12px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   color: #33332d;
-  border: solid 2px #33332d;
+  border: solid 1px #33332d;
+}
+
+input.title:hover,
+input.author:hover,
+input.pages:hover {
+  background-color: #f5f5f5;
 }
 
 .checkDiv {

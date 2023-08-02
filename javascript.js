@@ -3,8 +3,11 @@ const modalContainer = document.querySelector('.modalContainer');
 const bookForm = document.querySelector('.bookForm');
 const overlay = document.querySelector('.overlay');
 const cards = document.querySelector('.cards');
+const inputFieldText = document.querySelectorAll('#inputFields');
 
 let submitIsClicked = 0;
+let removeIsClicked = false;
+let target;
 
 let myLibrary = [];
 
@@ -41,6 +44,8 @@ function displayBook() {
   newP3.classList.add('pages');
   createBtn1.classList.add('hasRead');
   newDiv.classList.add('bookCard');
+  createBtn2.classList.add('showRemoveBtn');
+  createBtn2.textContent = 'Remove';
 
   const elementsToAdd = [newP1, newP2, newP3, createBtn1, createBtn2];
 
@@ -54,8 +59,6 @@ function displayBook() {
     newP1.textContent = book.title;
     newP2.textContent = book.author;
     newP3.textContent = book.pages;
-    createBtn2.classList.add('showRemoveBtn');
-    createBtn2.textContent = 'Remove';
 
     if (book.hasReadBook === 'Already Read') {
       createBtn1.classList.add('showReadBtn');
@@ -65,11 +68,29 @@ function displayBook() {
       createBtn1.textContent = 'Not read yet';
     }
   });
+
+  createBtn2.addEventListener('click', (e) => {
+    removeIsClicked = true;
+    target = e.target;
+    removeCard();
+    return;
+  });
+}
+
+function removeCard() {
+  if (removeIsClicked) {
+    const removeButton = target;
+    const bookCard = removeButton.closest('.bookCard');
+    bookCard.remove();
+  }
 }
 
 btn.addEventListener('click', () => {
   modalContainer.classList.add('showModal');
   overlay.classList.add('overlayActive');
+  inputFieldText.forEach((field) => {
+    field.value = '';
+  });
 });
 
 bookForm.addEventListener('submit', (e) => {

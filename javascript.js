@@ -5,7 +5,6 @@ const overlay = document.querySelector('.overlay');
 const cards = document.querySelector('.cards');
 const inputFieldText = document.querySelectorAll('#inputFields');
 
-let submitIsClicked = 0;
 let removeIsClicked = false;
 let target;
 
@@ -16,6 +15,12 @@ function Book(title, author, pages, hasReadBook) {
   this.author = author;
   this.pages = pages;
   this.hasReadBook = hasReadBook;
+}
+
+function toggleReadStatus(btn, status1, status2, string) {
+  btn.classList.remove(status1);
+  btn.classList.add(status2);
+  btn.textContent = string;
 }
 
 function addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook) {
@@ -29,9 +34,9 @@ function addBookToLibrary(bookTitle, bookAuthor, bookPages, hasReadTheBook) {
 }
 
 function displayBook() {
-  if (submitIsClicked > 1) {
+  /* if (submitIsClicked > 1) {
     myLibrary.shift();
-  }
+  } */
 
   const newDiv = document.createElement('div');
   const newP1 = document.createElement('p');
@@ -55,10 +60,12 @@ function displayBook() {
 
   cards.appendChild(newDiv);
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     newP1.textContent = book.title;
     newP2.textContent = book.author;
     newP3.textContent = book.pages;
+
+    console.log(index);
 
     if (book.hasReadBook === 'Already Read') {
       createBtn1.classList.add('showReadBtn');
@@ -67,6 +74,8 @@ function displayBook() {
       createBtn1.classList.add('showNotReadBtn');
       createBtn1.textContent = 'Not read yet';
     }
+
+    createBtn1.setAttribute('data-book-index', index);
   });
 
   createBtn2.addEventListener('click', (e) => {
@@ -74,6 +83,31 @@ function displayBook() {
     target = e.target;
     removeCard();
     return;
+  });
+
+  createBtn1.addEventListener('click', (e) => {
+    const bookIndex = e.target.getAttribute('data-book-index');
+    const book = myLibrary[bookIndex];
+
+    console.log(bookIndex);
+
+    if (book.hasReadBook === 'Already Read') {
+      toggleReadStatus(
+        createBtn1,
+        'showReadBtn',
+        'showNotReadBtn',
+        'Not read yet'
+      );
+      book.hasReadBook = 'Not read yet'; // Update the book object in myLibrary
+    } else if (book.hasReadBook === 'Not read yet') {
+      toggleReadStatus(
+        createBtn1,
+        'showNotReadBtn',
+        'showReadBtn',
+        'Already read'
+      );
+      book.hasReadBook = 'Already Read'; // Update the book object in myLibrary
+    }
   });
 }
 
@@ -96,8 +130,6 @@ btn.addEventListener('click', () => {
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  submitIsClicked++;
-  console.log(submitIsClicked);
   const bookTitle = document.querySelector('.title').value;
   const bookAuthor = document.querySelector('.author').value;
   const bookPages = document.querySelector('.pages').value;
@@ -128,9 +160,3 @@ overlay.addEventListener('click', () => {
   modalContainer.classList.remove('showModal');
   overlay.classList.remove('overlayActive');
 });
-
-/* Things to add:
-
--Make the pages input accept only numbers
-
-*/

@@ -69,9 +69,11 @@ function displayBook() {
 
     if (book.hasReadBook === 'Already Read') {
       createBtn1.classList.add('showReadBtn');
+      createBtn1.classList.remove('showNotReadBtn');
       createBtn1.textContent = 'Already read';
     } else if (book.hasReadBook === 'Not read yet') {
       createBtn1.classList.add('showNotReadBtn');
+      createBtn1.classList.remove('showReadBtn');
       createBtn1.textContent = 'Not read yet';
     }
 
